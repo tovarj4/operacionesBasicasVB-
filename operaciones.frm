@@ -130,7 +130,7 @@ Begin VB.Form Form1
    Begin VB.Label lblTitulo 
       Caption         =   "Operaciones Basicas"
       BeginProperty Font 
-         Name            =   "Britannic Bold"
+         Name            =   "Arial"
          Size            =   48
          Charset         =   0
          Weight          =   400
@@ -342,3 +342,4 @@ Private Sub cmdCerrar_Click()
 Unload Form1
 
 End Sub
+'Fin
