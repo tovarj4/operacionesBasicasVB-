@@ -273,6 +273,7 @@ r = False
     
 End If
 End Function
+'esta funcion valida si el resultado es negativo lo pone en color rojo
 Function validaNegativo(n As Double)
 If n < 0 Then
 lblResultado.ForeColor = &HFF&
