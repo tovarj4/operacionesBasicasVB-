@@ -273,21 +273,32 @@ r = False
     
 End If
 End Function
+Function validaNegativo(n As Double)
+If n < 0 Then
+lblResultado.ForeColor = &HFF&
+Else
+lblResultado.ForeColor = &H0&
+End If
+End Function
 ' Funcion Valida el tipo de operacion y se la asigna a la variable resultado
 Function resultado(ope As String) As Double
     
     Select Case ope
     Case "+" 'Suma
     resultado = uno + dos
+    
     Case "-" 'Resta
     resultado = uno - dos
+    
     Case "/" 'Divide
     resultado = uno / dos
+    
     Case "*" 'Multiplica
     resultado = uno * dos
     
     End Select
-
+    'Valida que el resultado no sea negativo
+validaNegativo (resultado)
 End Function
 'Validan en Keypress Que el Textbox solo acepte numeros y punto
 Private Sub txtNum1_KeyPress(KeyAscii As Integer)
