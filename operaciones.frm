@@ -351,7 +351,8 @@ End If
 End Sub
 
 Private Sub cmdCerrar_Click()
-Unload Form1
+
+	Unload Form1
 
 End Sub
 'Fin
