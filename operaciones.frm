@@ -225,6 +225,7 @@ Begin VB.Form Form1
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
+         ForeColor       =   &H8000000D&
       EndProperty
       Height          =   855
       Left            =   7560
