@@ -1,13 +1,37 @@
 VERSION 5.00
 Begin VB.Form Form1 
    Caption         =   "Operaciones basicas"
-   ClientHeight    =   5895
-   ClientLeft      =   6705
-   ClientTop       =   3525
-   ClientWidth     =   9465
+   ClientHeight    =   10785
+   ClientLeft      =   7260
+   ClientTop       =   915
+   ClientWidth     =   9495
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5895
-   ScaleWidth      =   9465
+   ScaleHeight     =   10785
+   ScaleWidth      =   9495
+   Begin VB.ListBox ListTablas 
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   4740
+      Left            =   2400
+      TabIndex        =   16
+      Top             =   5760
+      Width           =   3855
+   End
+   Begin VB.ComboBox ComTablas 
+      Height          =   315
+      Left            =   3480
+      Style           =   2  'Dropdown List
+      TabIndex        =   15
+      Top             =   5280
+      Width           =   2055
+   End
    Begin VB.CommandButton cmdCerrar 
       BackColor       =   &H008080FF&
       Caption         =   "Cerrar"
@@ -21,10 +45,10 @@ Begin VB.Form Form1
          Strikethrough   =   0   'False
       EndProperty
       Height          =   615
-      Left            =   7440
+      Left            =   7680
       MaskColor       =   &H000000FF&
       TabIndex        =   9
-      Top             =   5040
+      Top             =   10080
       Width           =   1815
    End
    Begin VB.CommandButton cmdDivide 
@@ -39,9 +63,9 @@ Begin VB.Form Form1
          Strikethrough   =   0   'False
       EndProperty
       Height          =   735
-      Left            =   5160
+      Left            =   6600
       TabIndex        =   8
-      Top             =   4560
+      Top             =   3000
       Width           =   1695
    End
    Begin VB.CommandButton cmdMultiplica 
@@ -56,9 +80,9 @@ Begin VB.Form Form1
          Strikethrough   =   0   'False
       EndProperty
       Height          =   735
-      Left            =   2880
+      Left            =   4680
       TabIndex        =   7
-      Top             =   4440
+      Top             =   3000
       Width           =   1575
    End
    Begin VB.CommandButton cmdResta 
@@ -73,9 +97,9 @@ Begin VB.Form Form1
          Strikethrough   =   0   'False
       EndProperty
       Height          =   735
-      Left            =   5160
+      Left            =   2520
       TabIndex        =   6
-      Top             =   3480
+      Top             =   3000
       Width           =   1695
    End
    Begin VB.CommandButton cmdSuma 
@@ -90,9 +114,9 @@ Begin VB.Form Form1
          Strikethrough   =   0   'False
       EndProperty
       Height          =   735
-      Left            =   2880
+      Left            =   480
       TabIndex        =   5
-      Top             =   3480
+      Top             =   3000
       Width           =   1575
    End
    Begin VB.TextBox txtNum2 
@@ -126,6 +150,26 @@ Begin VB.Form Form1
       TabIndex        =   0
       Top             =   1800
       Width           =   1935
+   End
+   Begin VB.Label lblTablas 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "Tablas"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   26.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
+      Height          =   615
+      Left            =   3720
+      TabIndex        =   14
+      Top             =   4200
+      Width           =   1620
    End
    Begin VB.Label lblTitulo 
       Caption         =   "Operaciones Basicas"
@@ -225,7 +269,6 @@ Begin VB.Form Form1
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
-         ForeColor       =   &H8000000D&
       EndProperty
       Height          =   855
       Left            =   7560
@@ -302,6 +345,31 @@ Function resultado(ope As String) As Double
     'Valida que el resultado no sea negativo
 validaNegativo (resultado)
 End Function
+
+
+
+Private Sub ComTablas_Click()
+Dim i As Integer, c As Integer, r As Integer
+    i = ComTablas.ListIndex
+      ListTablas.Clear
+    For c = 1 To 100
+        r = i * c
+      
+        
+        ListTablas.AddItem (CStr(i) & "  X  " & CStr(c) & "  =  " & CStr(r))
+    Next
+    
+End Sub
+
+Private Sub Form_Load()
+Dim i  As Integer
+For i = 0 To 100
+    ComTablas.AddItem CStr(i)
+Next i
+End Sub
+
+
+
 'Validan en Keypress Que el Textbox solo acepte numeros y punto
 Private Sub txtNum1_KeyPress(KeyAscii As Integer)
 If (KeyAscii >= 97) And (KeyAscii < 122) Or (KeyAscii >= 65) And (KeyAscii < 90) Or (KeyAscii >= 33) And (KeyAscii <= 45) Or (KeyAscii >= 58) And (KeyAscii <= 100) Or _
@@ -353,7 +421,7 @@ End Sub
 
 Private Sub cmdCerrar_Click()
 
-	Unload Form1
+        Unload Form1
 
 End Sub
 'Fin
